@@ -1,3 +1,5 @@
+// to define the breakpoints are optional and can be modified as needed
+
 {
   "id": "backstop_default",
   "viewports": [
@@ -23,11 +25,11 @@
       "url": "https://www.apple.com/",
       "referenceUrl": "https://www.apple.com/ca",
       "selectors": [
-        "body"
+        "body"  // selecting the entire page
       ],
       "readyEvent": "",
       "readySelector": "",
-      "delay": 1000,
+      "delay": 1000,  // modify delay as needed
       "misMatchThreshold": 0.1,
       "onBeforeScript": "puppet/onBefore.js",
       "onReadyScript": "puppet/onReady.js"
@@ -37,11 +39,11 @@
       "url": "https://www.apple.com/",
       "referenceUrl": "https://www.apple.com/ca",
       "selectors": "#globalnav-menutrigger-button", 
-      "clickSelector": "#globalnav-menutrigger-button", 
-      "onReadyScript": "backstop_data/engine_scripts/clickElement.js",
+      "clickSelector": "#globalnav-menutrigger-button", // clicking on specific selector only on TABLET breakpoint
+      "onReadyScript": "backstop_data/engine_scripts/clickElement.js", // When setting a different scenario, need to create a separate file.js in puppet and define own script, then include the file path here
       "misMatchThreshold": 0.1,
       "delay": 1001,
-      "viewports": [
+      "viewports": [  // this is setting this scenario only for TABLET
         {
           "label": "tablet",
           "width": 768,
@@ -54,17 +56,17 @@
       "url": "https://www.apple.com/",
       "referenceUrl": "https://www.apple.com/ca",
       "selectors": [".button.button-elevated.button-tertiary"],
-      "hoverSelector": ".button.button-elevated.button-tertiary",
+      "hoverSelector": ".button.button-elevated.button-tertiary", //specific selector for hover state comparison
       "onReadyScript": "backstop_data/engine_scripts/hoverState.js",
       "misMatchThreshold": 0.1,
       "delay": 1000
     }
   ],
   "paths": {
-    "bitmaps_reference": "backstop_data/bitmaps_reference",
-    "bitmaps_test": "backstop_data/bitmaps_test",
+    "bitmaps_reference": "backstop_data/bitmaps_reference", // captures reference url screenshots
+    "bitmaps_test": "backstop_data/bitmaps_test",  // captures main url screenshots
     "engine_scripts": "backstop_data/engine_scripts",
-    "html_report": "backstop_data/html_report",
+    "html_report": "backstop_data/html_report", // gives test report
     "ci_report": "backstop_data/ci_report"
   },
   "report": ["browser"],
@@ -73,5 +75,5 @@
   "asyncCaptureLimit": 5,
   "asyncCompareLimit": 50,
   "debug": false,
-  "debugWindow": true
+  "debugWindow": true  // set "true" if you want to see opening the window tab while testing
 }
