@@ -1,0 +1,77 @@
+{
+  "id": "backstop_default",
+  "viewports": [
+    {
+      "label": "desktop",
+      "width": 1280,
+      "height": 1024
+    },
+    {
+      "label": "tablet",
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "label": "mobile",
+      "width": 375,
+      "height": 667
+    }
+  ],
+  "scenarios": [
+    {
+      "label": "Apple main page",
+      "url": "https://www.apple.com/",
+      "referenceUrl": "https://www.apple.com/ca",
+      "selectors": [
+        "body"
+      ],
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 1000,
+      "misMatchThreshold": 0.1,
+      "onBeforeScript": "puppet/onBefore.js",
+      "onReadyScript": "puppet/onReady.js"
+    },
+    {
+      "label": "Apple Click on Menu in Tablet",
+      "url": "https://www.apple.com/",
+      "referenceUrl": "https://www.apple.com/ca",
+      "selectors": "#globalnav-menutrigger-button", 
+      "clickSelector": "#globalnav-menutrigger-button", 
+      "onReadyScript": "backstop_data/engine_scripts/clickElement.js",
+      "misMatchThreshold": 0.1,
+      "delay": 1001,
+      "viewports": [
+        {
+          "label": "tablet",
+          "width": 768,
+          "height": 1024
+        }
+      ]
+    },
+    {
+      "label": "CTA button hover state",
+      "url": "https://www.apple.com/",
+      "referenceUrl": "https://www.apple.com/ca",
+      "selectors": [".button.button-elevated.button-tertiary"],
+      "hoverSelector": ".button.button-elevated.button-tertiary",
+      "onReadyScript": "backstop_data/engine_scripts/hoverState.js",
+      "misMatchThreshold": 0.1,
+      "delay": 1000
+    }
+  ],
+  "paths": {
+    "bitmaps_reference": "backstop_data/bitmaps_reference",
+    "bitmaps_test": "backstop_data/bitmaps_test",
+    "engine_scripts": "backstop_data/engine_scripts",
+    "html_report": "backstop_data/html_report",
+    "ci_report": "backstop_data/ci_report"
+  },
+  "report": ["browser"],
+  "engine": "puppeteer",
+  "engineFlags": [],
+  "asyncCaptureLimit": 5,
+  "asyncCompareLimit": 50,
+  "debug": false,
+  "debugWindow": true
+}
